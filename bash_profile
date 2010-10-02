@@ -137,7 +137,7 @@ export PATH="$CAMINO:$PATH"
 #source /Users/arno/Software/ITKsnap/bashcomp.sh
 
 # ImageMagick:
-IMAGEDIR=/Applications/ImageMagick-6.6.3/bin
+IMAGEDIR=/Software/ImageMagick/bin
 PATH=${IMAGEDIR}:${PATH}
 export IMAGEDIR PATH
 
