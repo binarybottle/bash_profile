@@ -1,13 +1,13 @@
-is_bijli=1;
-is_litchi=0;
-is_mango=0;
+is_apple=1;
+is_linux=0;
+#if [ $is_apple==1 ]; then
+#fi
 
 # Aliases:
 # Aliases -- Git:
  alias ga='git add'
  alias gc='git commit'
  alias gp='git push origin master'
-
  alias gpull='git pull'
  alias gb='git branch'
  alias gh='git --help'
@@ -40,8 +40,8 @@ is_mango=0;
  alias dc='cd /Users/arno/Documents'
  alias dd='cd /Users/arno/Dropbox'
  alias dp='cd /Users/arno/Documents/Projects'
- alias dr='cd /Users/arno/Sites/roygbiv'
  alias ds='cd /Users/arno/Software'
+ alias dm='cd /Users/arno/Documents/Projects/Mindboggle/mindboggle/mindboggle'
  alias g='grep'
  alias h='history'
  alias j="jobs"
@@ -50,34 +50,44 @@ is_mango=0;
  alias p='pwd'
  alias ps='ps -ef | more'
  alias ps='ps -aux | more'
- alias r='rm *#* .*#* *~ .*~ core .DS_Store'
+ alias r='rm *#* .*#* *~ .*~ core .DS_Store *.pyc crash-*'
  alias rrf='rm -rf'
  alias x='xhost +; su'
 
 # Aliases -- applications:
  alias e='emacs &'
  alias eb='emacs /Users/arno/.bash_profile'
- alias f='/Applications/fsl/bin/fslview.app/Contents/MacOS/fslview $1'
- alias pre='/Applications/Preview.app/Contents/MacOS/Preview $1'
- alias sage='/Applications/sage/sage'
- alias slicer='/Users/arno/Software/Slicer3-3.4.1-2009-10-08-darwin-x86/Slicer3'
+ alias f='/usr/local/fsl/bin/fslview.app/Contents/MacOS/fslview $1'
+if [ $is_apple==1 ]; then
+ alias mayavi='/Applications/Enthought/Mayavi.app/Contents/MacOS/Mayavi &'
  alias snap='/Applications/ITK-SNAP.app/Contents/MacOS/InsightSNAP $1'
- alias updateants='cd /Users/arno; svn update https://advants.svn.sourceforge.net/svnroot/advants'
+fi
+if [ $is_linux==1 ]; then
+# alias mayavi='/usr/local/Enthought/Mayavi.app/Contents/MacOS/Mayavi &'
+# alias snap='/usr/local/ITK-SNAP.app/Contents/MacOS/InsightSNAP $1'
+fi
 
 # Aliases -- rsync:
  alias rsyncecho='echo "rsync -avz --sparse --exclude-from=/Users/arno/.rsync-exclude -e /usr/bin/ssh <in> ."'
- alias rsyncArchive2home='cd /hd2/data; rsync -avz --delete --numeric-ids --sparse --exclude-from=/Users/arno/.rsync-exclude -e /usr/bin/ssh 192.168.23.80:/hd2/data/Archive .' 
- alias rsyncAtlases2home='cd /Users/arno/Lab; rsync -avz --delete --numeric-ids --sparse --exclude-from=/Users/arno/.rsync-exclude -e /usr/bin/ssh 192.168.23.80:/hd2/data/Atlases .' 
- alias rsyncDocuments2home='cd /Users/arno/Lab; rsync -avz --delete --numeric-ids --sparse --exclude-from=/Users/arno/.rsync-exclude -e /usr/bin/ssh 192.168.23.80:/Users/arno/Documents .' 
- alias rsyncdhost2home='cd /Users/arno/Sites/dreamhost_backup; rsync -avz --delete --numeric-ids --sparse --exclude-from=/Users/arno/.rsync-exclude -e /usr/bin/ssh binarybottle@binarybottle.com:/home/binarybottle/* .' 
+if [ $is_apple==1 ]; then
+  alias rsyncbrains2home='cd /hd2/Lab; rsync -avz --delete --numeric-ids --sparse --exclude-from=/Users/arno/.rsync-exclude -e /usr/bin/ssh 192.168.23.219:/home/arno/Data/Brains .' 
+  alias rsyncdocs2home='cd /hd2/Lab; rsync -avz --delete --numeric-ids --sparse --exclude-from=/Users/arno/.rsync-exclude -e /usr/bin/ssh 192.168.23.219:/home/arno/Documents .' 
+  alias rsyncdhost2home='cd /Users/arno/Sites; rsync -avz --delete --numeric-ids --sparse --exclude-from=/Users/arno/.rsync-exclude -e /usr/bin/ssh binarybottle@binarybottle.com:/home/binarybottle/* .' 
+  alias rsyncdhostbkp='rsync -e ssh -av A b498945@hanjin.dreamhost.com:~/B'
+fi
 
 # Aliases -- connections:
- alias sshb='ssh binarybottle@binarybottle.com'
- alias sshk='ssh kaklein@kaklein.com'
- alias sshp='ssh kleina@arnoldkleingallery.com'   # 'ssh -l arno `cat .ip`'
- alias sshc='ssh arno@192.168.23.80'
-# alias ssht='ssh arno@teckla.idyll.org'   # 'ssh -l arno `cat .ip`'
-# alias sshg='ssh arno@gate.nmr.mgh.harvard.edu'
+ alias sshd='ssh -x binarybottle@binarybottle.com' # binarybottle
+ alias sshftpmindboggle='ssh ftpmindboggle@mindboggle.info' # binarybottle
+ alias sshk='ssh -x kaklein@kaklein.com' # kaklein
+ alias sshb='ssh -x arno@172.21.87.231' # boggle
+ alias sshf='ssh -x arno@129.118.38.95' # forrest
+ alias ssht='ssh -x arklein@hrothgar.hpcc.ttu.edu' # ttu
+#hrothgar.hpcc.ttu.edu  (for general jobs)
+#antaeus.hpcc.ttu.edu  (for OSG and HEP group)
+#weland.hpcc.ttu.edu  (for PEGrid)
+#HPCC user guides are accessible on our website at http://www.hpcc.ttu.edu/php/NewUser.php
+
 # alias scpb='scp binarybottle@binarybottle.com:$1 .'
 # alias scp2b='scp $1 binarybottle@binarybottle.com:$1'
 
@@ -95,27 +105,43 @@ GITDIR=/usr/local/git
 PATH=${GITDIR}/bin:${PATH}
 export GITDIR PATH
 
+# Mindboggle
+MINDBOGGLE=/projects/Mindboggle/mindboggle/mindboggle
+MINDBOGGLE_TOOLS=/software/mindboggle_tools/bin
+MINDBOGGLE_DATA=/drop/MB/data
+export MINDBOGGLE MINDBOGGLE_TOOLS MINDBOGGLE_DATA
+export PATH=$PATH:$MINDBOGGLE
+export PATH=$PATH:$MINDBOGGLE_TOOLS
+export PATH=$PATH:$MINDBOGGLE_DATA
+export PYTHONPATH=$PYTHONPATH:$MINDBOGGLE
+
+# FreeSurfer:
+if [ $is_apple==1 ]; then
+  FREESURFER_HOME=/Applications/freesurfer
+  SUBJECTS_DIR=/Applications/freesurfer/subjects
+  #SUBJECTS_DIR=/Users/arno/subjects
+  #SUBJECTS_DIR=/hd2/Lab/Brains/Mindboggle101/subjects
+fi
+if [ $is_linux==1 ]; then
+  FREESURFER_HOME=/usr/local/freesurfer
+  SUBJECTS_DIR=/usr/local/freesurfer/subjects
+  #SUBJECTS_DIR=/data/Brains/Mindboggle101/subjects
+fi
+PATH=${FREESURFER_HOME}:${PATH}
+FS_FREESURFERENV_NO_OUTPUT=1
+FSL_DIR=${FSLDIR}
+export FREESURFER_HOME FS_FREESURFERENV_NO_OUTPUT SUBJECTS_DIR
+source $FREESURFER_HOME/SetUpFreeSurfer.sh
+
 # ANTS:
-if [ $is_bijli==1 ]; then
-  ANTSPATH=/Users/arno/Software/ANTS-build/
-  ANTSPATH2=/Users/arno/Software/ANTS/Scripts/
-  export ANTSPATH ANTSPATH2 PATH
-fi
-if [ $is_litchi==1 ]; then
-  ANTSPATH=/Users/arno/Software/Darwini386ANTS1pt5/
-  ANTSPATH2=/Users/arno/Software/Darwini386ANTS1pt5/Scripts/
-  export ANTSPATH ANTSPATH2 PATH
-fi
-if [ $is_mango==1 ]; then
-  ANTSPATH=/data/BI/Toolbox/software/ants_maci_svn606/bin/
-  PATH=${ANTSPATH}:${PATH}
-  export ANTSPATH PATH
-fi
+ANTSPATH=/Users/arno/Software/ANTS_1.9/bin/
+PATH=${ANTSPATH}:${PATH}
+export ANTSPATH PATH
 
 # AFNI:
-AFNIHOME=/Users/arno/Software/AFNI
-PATH=${AFNIHOME}:${PATH}
-export AFNIHOME PATH
+#AFNIHOME=/Users/arno/Software/AFNI
+#PATH=${AFNIHOME}:${PATH}
+#export AFNIHOME PATH
 
 # Convert3d:
 C3DDIR=/Users/arno/Software/c3D
@@ -123,8 +149,8 @@ PATH=${C3DDIR}/bin:${PATH}
 export C3DDIR PATH
 
 # Virtualenvwrapper:
-WORKON_HOME=/Users/arno/Envs
-export WORKON_HOME PATH
+#WORKON_HOME=/Users/arno/Envs
+#export WORKON_HOME PATH
 
 # Camino:
 CAMINO=/Users/arno/Software/camino
@@ -137,22 +163,12 @@ export PATH="$CAMINO:$PATH"
 #source /Users/arno/Software/ITKsnap/bashcomp.sh
 
 # ImageMagick:
-IMAGEDIR=/Software/ImageMagick/bin
-PATH=${IMAGEDIR}:${PATH}
-export IMAGEDIR PATH
-
-# Caret:
-CARETDIR=/Applications/caret/bin_macosx
-PATH=${CARETDIR}:${PATH}
-export CARETDIR PATH
+#IMAGEDIR=/Software/ImageMagick-6.6.9/bin
+#PATH=${IMAGEDIR}:${PATH}
+#export IMAGEDIR PATH
 
 # FSL:
-if [ $is_litchi==1 ]; then
-  FSLDIR=/Applications/fsl
-fi
-if [ $is_mango==1 ]; then
-  FSLDIR=/usr/local/fsl
-fi
+FSLDIR=/usr/local/fsl
 if [ $is_bijli==1 ]; then
   FSLDIR=/usr/local/fsl
 fi
@@ -160,46 +176,19 @@ fi
 PATH=${FSLDIR}/bin:${PATH}
 export FSLDIR PATH
 
-# FreeSurfer:
-FREESURFER_HOME=/Applications/freesurfer
-PATH=${FREESURFER_HOME}:${PATH}
-FS_FREESURFERENV_NO_OUTPUT=1
-FSL_DIR=${FSLDIR}
-SUBJECTS_DIR=/Applications/freesurfer/subjects
-#SUBJECTS_DIR=/Applications/freesurfer/subjects
-#SUBJECTS_DIR=/Users/arno/Documents/Projects/extract_brain_2010/subjects
-#SUBJECTS_DIR=/hd2/data/freesurfer_subjects_templates
-export FREESURFER_HOME FS_FREESURFERENV_NO_OUTPUT SUBJECTS_DIR
-source $FREESURFER_HOME/SetUpFreeSurfer.sh
-
 # VTK:
 VTK=/Users/arno/Software/VTK-build
 PATH=${VTK}:${PATH}
 PATH=${VTK}/bin:${PATH}
 export VTK PATH
 
+#export PYTHONPATH="$PYTHONPATH:/Library/Frameworks/Python.framework/Versions/7.1/bin"
+#export PYTHONPATH
 
-
-# Homology-related:
-export PYTHONPATH="$PYTHONPATH:/Users/arno/Software/Dionysus/build/bindings/python"
-#
-BOOST_ROOT=/Users/arno/Software/boost_1_43_0
-PATH=${BOOST_ROOT}:${PATH}
-export BOOST_ROOT PATH
-
-#export JAVA_HOME=/Library/Java/Home
-##/System/Library/Frameworks/JavaVM.framework/Versions/CurrentJDK/Home
-#export JAVA_OPTS="-Xmx1000M -DentityExpansionLimit=1000000"
-
-#STAPLE=/Users/arno/crkit_build/install
-#PATH=${STAPLE}/bin:${PATH}
-#export DYLD_LIBRARY_PATH=${STAPLE}/vtk/lib/vtk-5.2:${STAPLE}/itk/lib/InsightToolkit:$DYLD_LIBRARY_PATH
-
-#STAPLE=/Users/arno/crkit_build/install #bingcc/apps/staple/code
-#BUNDLE="`echo "$0" | sed -e 's/\/Contents\/MacOS\/CRKit//'`"
-#RESOURCES="$BUNDLE/Contents/Resources"
-
+# EPD
+PATH="/Library/Frameworks/EPD64.framework/Versions/Current/bin:${PATH}"
 export PATH
 
-. /usr/local/bin/virtualenvwrapper.sh
-workon env1
+
+MKL_NUM_THREADS=1
+export MKL_NUM_THREADS
