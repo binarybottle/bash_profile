@@ -62,10 +62,10 @@ if [ $is_apple==1 ]; then
  alias mayavi='/Applications/Enthought/Mayavi.app/Contents/MacOS/Mayavi &'
  alias snap='/Applications/ITK-SNAP.app/Contents/MacOS/InsightSNAP $1'
 fi
-if [ $is_linux==1 ]; then
+#if [ $is_linux==1 ]; then
 # alias mayavi='/usr/local/Enthought/Mayavi.app/Contents/MacOS/Mayavi &'
 # alias snap='/usr/local/ITK-SNAP.app/Contents/MacOS/InsightSNAP $1'
-fi
+#fi
 
 # Aliases -- rsync:
  alias rsyncecho='echo "rsync -avz --sparse --exclude-from=/Users/arno/.rsync-exclude -e /usr/bin/ssh <in> ."'
@@ -122,14 +122,13 @@ if [ $is_apple==1 ]; then
   #SUBJECTS_DIR=/Users/arno/subjects
   #SUBJECTS_DIR=/hd2/Lab/Brains/Mindboggle101/subjects
 fi
-if [ $is_linux==1 ]; then
-  FREESURFER_HOME=/usr/local/freesurfer
-  SUBJECTS_DIR=/usr/local/freesurfer/subjects
-  #SUBJECTS_DIR=/data/Brains/Mindboggle101/subjects
-fi
+#if [ $is_linux==1 ]; then
+#  FREESURFER_HOME=/usr/local/freesurfer
+#  SUBJECTS_DIR=/usr/local/freesurfer/subjects
+#  #SUBJECTS_DIR=/data/Brains/Mindboggle101/subjects
+#fi
 PATH=${FREESURFER_HOME}:${PATH}
 FS_FREESURFERENV_NO_OUTPUT=1
-FSL_DIR=${FSLDIR}
 export FREESURFER_HOME FS_FREESURFERENV_NO_OUTPUT SUBJECTS_DIR
 source $FREESURFER_HOME/SetUpFreeSurfer.sh
 
@@ -139,9 +138,9 @@ PATH=${ANTSPATH}:${PATH}
 export ANTSPATH PATH
 
 # AFNI:
-#AFNIHOME=/Users/arno/Software/AFNI
-#PATH=${AFNIHOME}:${PATH}
-#export AFNIHOME PATH
+AFNIHOME=/Users/arno/Software/AFNI
+PATH=${AFNIHOME}:${PATH}
+export AFNIHOME PATH
 
 # Convert3d:
 C3DDIR=/Users/arno/Software/c3D
