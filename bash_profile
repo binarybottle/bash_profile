@@ -125,6 +125,31 @@ export PATH=$PATH:$MINDBOGGLE_TOOLS
 export PATH=$PATH:$MINDBOGGLE_DATA
 export PYTHONPATH=$PYTHONPATH:$MINDBOGGLE
 
+# Homebrew Python
+# Instruction:  http://penandpants.com/2012/02/24/install-python/
+# Site-packages:  /usr/local/lib/python2.7/site-packages/
+# Other: /usr/local/Cellar/
+export PATH=/usr/local/bin:/usr/local/share/python:$PATH
+
+# Other Pythons:
+#export PYTHONPATH=$PYTHONPATH:/Library/Frameworks/EPD64.framework/Versions/Current/bin
+#export PYTHONPATH=/usr/local/lib/python2.7/site-packages:$PYTHONPATH
+#export PYTHONPATH=$PYTHONPATH:/software/VTK-build/bin/
+#export PYTHONPATH=$PYTHONPATH:/software/VTK/Wrapping/Python/
+#export LD_LIBRARY_PATH=/software/VTK-build/bin/
+# EPD
+#PATH="/Library/Frameworks/EPD64.framework/Versions/Current/bin:${PATH}"
+#export PATH
+
+# VTK install with homebrew (http://mxcl.github.com/homebrew/): 
+# ruby -e "$(curl -fsSkL raw.github.com/mxcl/homebrew/go)"
+# http://powernap.github.com/blog/2012/08/20/install-python-together-with-vtk-using-homebrew-for-mountain-lion/
+# Other VTK installation
+#VTK=/usr/local/Cellar/vtk/5.10.0
+#PATH=${VTK}:${PATH}
+#PATH=${VTK}/bin:${PATH}
+#export VTK PATH
+
 # FreeSurfer:
 FREESURFER_HOME=/appsdir/freesurfer
 #SUBJECTS_DIR=/appsdir/freesurfer/subjects
@@ -176,20 +201,6 @@ fi
 . ${FSLDIR}/etc/fslconf/fsl.sh
 PATH=${FSLDIR}/bin:${PATH}
 export FSLDIR PATH
-
-# VTK:
-VTK=/software/VTK-build
-PATH=${VTK}:${PATH}
-PATH=${VTK}/bin:${PATH}
-export VTK PATH
-
-#export PYTHONPATH="$PYTHONPATH:/Library/Frameworks/Python.framework/Versions/7.1/bin"
-#export PYTHONPATH
-
-# EPD
-#PATH="/Library/Frameworks/EPD64.framework/Versions/Current/bin:${PATH}"
-#export PATH
-
 
 MKL_NUM_THREADS=1
 export MKL_NUM_THREADS
