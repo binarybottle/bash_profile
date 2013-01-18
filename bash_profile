@@ -1,8 +1,8 @@
 # Assumes the following symbolic links:
-# /homedir (ex: /home/arno/ or /Users/arno/)
-# /appsdir (ex: /usr/local/ or /Applications/)
-# /data (ex: /home/arno/Data/ or /Users/arno/Data/)
-# /software (ex: /home/arno/Software/ or /Users/arno/Software/)
+# /homedir (ex: /home/arno or /Users/arno)
+# /appsdir (ex: /usr/local or /Applications)
+# /data (ex: /home/arno/Data or /Users/arno/Data)
+# /software (ex: /home/arno/Software or /Users/arno/Software)
 
 # Only certain paths need to be set for Linux vs. Apple:
 is_apple=1;
@@ -127,7 +127,7 @@ export PYTHONPATH=$PYTHONPATH:$MINDBOGGLE
 
 # FreeSurfer:
 FREESURFER_HOME=/appsdir/freesurfer
-SUBJECTS_DIR=/appsdir/freesurfer/subjects
+#SUBJECTS_DIR=/appsdir/freesurfer/subjects
 SUBJECTS_DIR=/data/Brains/Mindboggle101/subjects
 PATH=${FREESURFER_HOME}:${PATH}
 FS_FREESURFERENV_NO_OUTPUT=1
@@ -135,7 +135,7 @@ export FREESURFER_HOME FS_FREESURFERENV_NO_OUTPUT SUBJECTS_DIR
 source $FREESURFER_HOME/SetUpFreeSurfer.sh
 
 # ANTS:
-ANTSPATH=/software/ANTS_1.9/bin/
+ANTSPATH=/software/ANTS_1.9/bin
 PATH=${ANTSPATH}:${PATH}
 export ANTSPATH PATH
 
@@ -187,8 +187,8 @@ export VTK PATH
 #export PYTHONPATH
 
 # EPD
-PATH="/Library/Frameworks/EPD64.framework/Versions/Current/bin:${PATH}"
-export PATH
+#PATH="/Library/Frameworks/EPD64.framework/Versions/Current/bin:${PATH}"
+#export PATH
 
 
 MKL_NUM_THREADS=1
