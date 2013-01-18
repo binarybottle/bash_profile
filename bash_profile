@@ -1,5 +1,5 @@
-is_apple=1;
-is_linux=0;
+is_apple=0;
+is_linux=1;
 #if [ $is_apple==1 ]; then
 #fi
 
@@ -30,18 +30,33 @@ is_linux=0;
  alias md='mkdir $1'
 
 # Aliases -- common:
+# if [ $is_apple==1 ]; then
+#   alias b='. /Users/arno/.bash_profile'
+# fi
+ if [ $is_linux==1 ]; then
+   alias b='. /home/arno/.bash_profile'
+ fi
  alias top='top -o cpu'
  alias ls='ls -G'
  alias a='alias | more'  
- alias b='. /Users/arno/.bash_profile'
  alias cr='cp -R'
  alias d='cd $1'
- alias dk='cd /Users/arno/Desktop'
- alias dc='cd /Users/arno/Documents'
- alias dd='cd /Users/arno/Dropbox'
- alias dp='cd /Users/arno/Documents/Projects'
- alias ds='cd /Users/arno/Software'
- alias dm='cd /Users/arno/Documents/Projects/Mindboggle/mindboggle/mindboggle'
+ if [ $is_apple==1 ]; then
+   alias dk='cd /Users/arno/Desktop'
+   alias dc='cd /Users/arno/Documents'
+   alias dd='cd /Users/arno/Dropbox'
+   alias dp='cd /Users/arno/Documents/Projects'
+   alias ds='cd /Users/arno/Software'
+   alias dm='cd /Users/arno/Documents/Projects/Mindboggle/mindboggle/mindboggle'
+ fi
+ if [ $is_linux==1 ]; then
+   alias dk='cd /home/arno/Desktop'
+   alias dc='cd /home/arno/Documents'
+   alias dd='cd /home/arno/Dropbox'
+   alias dp='cd /home/arno/Documents/Projects'
+   alias ds='cd /home/arno/Software'
+   alias dm='cd /home/arno/Documents/Projects/Mindboggle/mindboggle/mindboggle'
+ fi
  alias g='grep'
  alias h='history'
  alias j="jobs"
@@ -62,10 +77,10 @@ if [ $is_apple==1 ]; then
  alias mayavi='/Applications/Enthought/Mayavi.app/Contents/MacOS/Mayavi &'
  alias snap='/Applications/ITK-SNAP.app/Contents/MacOS/InsightSNAP $1'
 fi
-#if [ $is_linux==1 ]; then
-# alias mayavi='/usr/local/Enthought/Mayavi.app/Contents/MacOS/Mayavi &'
-# alias snap='/usr/local/ITK-SNAP.app/Contents/MacOS/InsightSNAP $1'
-#fi
+if [ $is_linux==1 ]; then
+ alias mayavi='/usr/local/Enthought/Mayavi.app/Contents/MacOS/Mayavi &'
+ alias snap='/usr/local/ITK-SNAP.app/Contents/MacOS/InsightSNAP $1'
+fi
 
 # Aliases -- rsync:
  alias rsyncecho='echo "rsync -avz --sparse --exclude-from=/Users/arno/.rsync-exclude -e /usr/bin/ssh <in> ."'
@@ -116,17 +131,17 @@ export PATH=$PATH:$MINDBOGGLE_DATA
 export PYTHONPATH=$PYTHONPATH:$MINDBOGGLE
 
 # FreeSurfer:
-if [ $is_apple==1 ]; then
-  FREESURFER_HOME=/Applications/freesurfer
-  SUBJECTS_DIR=/Applications/freesurfer/subjects
+#if [ $is_apple==1 ]; then
+  #FREESURFER_HOME=/Applications/freesurfer
+  #SUBJECTS_DIR=/Applications/freesurfer/subjects
   #SUBJECTS_DIR=/Users/arno/subjects
   #SUBJECTS_DIR=/hd2/Lab/Brains/Mindboggle101/subjects
-fi
-#if [ $is_linux==1 ]; then
-#  FREESURFER_HOME=/usr/local/freesurfer
-#  SUBJECTS_DIR=/usr/local/freesurfer/subjects
-#  #SUBJECTS_DIR=/data/Brains/Mindboggle101/subjects
 #fi
+if [ $is_linux==1 ]; then
+  FREESURFER_HOME=/usr/local/freesurfer
+  #SUBJECTS_DIR=/usr/local/freesurfer/subjects
+  SUBJECTS_DIR=/data/Brains/Mindboggle101/subjects
+fi
 PATH=${FREESURFER_HOME}:${PATH}
 FS_FREESURFERENV_NO_OUTPUT=1
 export FREESURFER_HOME FS_FREESURFERENV_NO_OUTPUT SUBJECTS_DIR
