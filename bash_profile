@@ -42,8 +42,8 @@ is_linux=0;
 
 # Aliases -- rsync to home:
  alias rsyncecho='echo "rsync -avz --sparse --exclude-from=/homedir/.rsync-exclude -e /usr/bin/ssh <in> ."'
- alias rsyncbrains2home='cd /hd2/Lab; rsync -avz --delete --numeric-ids --sparse --exclude-from=/homedir/.rsync-exclude -e /usr/bin/ssh 192.168.23.219:/data/Brains .' 
- alias rsyncdocs2home='cd /hd2/Lab; rsync -avz --delete --numeric-ids --sparse --exclude-from=/homedir/.rsync-exclude -e /usr/bin/ssh 192.168.23.219:/homedir/Documents .'
+ alias rsyncbrains2home='cd /hd2/Lab; rsync -avz --delete --numeric-ids --sparse --exclude-from=/homedir/.rsync-exclude -e /usr/bin/ssh 172.21.87.231:/data/Brains .' 
+ alias rsyncdocs2home='cd /hd2/Lab; rsync -avz --delete --numeric-ids --sparse --exclude-from=/homedir/.rsync-exclude -e /usr/bin/ssh 172.21.87.231:/homedir/Documents .'
  alias rsyncdhost2home='cd /homedir/Sites; rsync -avz --delete --numeric-ids --sparse --exclude-from=/homedir/.rsync-exclude -e /usr/bin/ssh binarybottle@binarybottle.com:/home/binarybottle/* .'
  alias rsyncdhostbkp='rsync -e ssh -av A b498945@hanjin.dreamhost.com:~/B'
 
