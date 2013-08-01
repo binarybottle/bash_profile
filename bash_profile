@@ -28,9 +28,10 @@ is_linux=0;
 
 # Aliases -- remote:
  alias sshd='ssh -x binarybottle@binarybottle.com' # binarybottle
+ alias sshm='ssh -p 130 arno@130.245.159.201' # mindboggler
  alias sshftpmindboggle='ssh ftpmindboggle@mindboggle.info' # binarybottle
  alias sshk='ssh -x kaklein@kaklein.com' # kaklein
- alias sshb='ssh -x arno@172.21.87.231' # boggle
+ alias sshb='ssh -x arno@172.21.95.241' # boggle
  alias sshf='ssh -x arno@129.118.38.95' # forrest
  alias ssht='ssh -x arklein@hrothgar.hpcc.ttu.edu' # ttu
  #hrothgar.hpcc.ttu.edu  (for general jobs)
@@ -116,14 +117,13 @@ PATH=${GITDIR}/bin:${PATH}
 export GITDIR PATH
 
 # Mindboggle
-MINDBOGGLE=/projects/Mindboggle/mindboggle/mindboggle
 MINDBOGGLE_TOOLS=/software/mindboggle_tools/bin
-MINDBOGGLE_DATA=/drop/MB/data
-export MINDBOGGLE MINDBOGGLE_TOOLS MINDBOGGLE_DATA
-export PATH=$PATH:$MINDBOGGLE
+export MINDBOGGLE_TOOLS
 export PATH=$PATH:$MINDBOGGLE_TOOLS
+
+MINDBOGGLE_DATA=/drop/MB/data
+export MINDBOGGLE_DATA
 export PATH=$PATH:$MINDBOGGLE_DATA
-export PYTHONPATH=$PYTHONPATH:$MINDBOGGLE
 
 # Homebrew Python
 # Instruction:  http://penandpants.com/2012/02/24/install-python/
@@ -152,15 +152,15 @@ export PATH=/usr/local/bin:/usr/local/share/python:$PATH
 
 # FreeSurfer:
 FREESURFER_HOME=/appsdir/freesurfer
-#SUBJECTS_DIR=/appsdir/freesurfer/subjects
-SUBJECTS_DIR=/data/Brains/Mindboggle101/subjects
+SUBJECTS_DIR=/appsdir/freesurfer/subjects
+#SUBJECTS_DIR=/data/Brains/Mindboggle101/subjects
 PATH=${FREESURFER_HOME}:${PATH}
 FS_FREESURFERENV_NO_OUTPUT=1
 export FREESURFER_HOME FS_FREESURFERENV_NO_OUTPUT SUBJECTS_DIR
 source $FREESURFER_HOME/SetUpFreeSurfer.sh
 
 # ANTS:
-ANTSPATH=/software/ANTS_1.9/bin
+ANTSPATH=/software/antsbin/bin
 PATH=${ANTSPATH}:${PATH}
 export ANTSPATH PATH
 
@@ -204,3 +204,6 @@ export FSLDIR PATH
 
 MKL_NUM_THREADS=1
 export MKL_NUM_THREADS
+
+# added by Anaconda 1.6.1 installer
+#export PATH="/software/anaconda/bin:$PATH"
