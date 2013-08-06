@@ -125,31 +125,6 @@ MINDBOGGLE_DATA=/drop/MB/data
 export MINDBOGGLE_DATA
 export PATH=$PATH:$MINDBOGGLE_DATA
 
-# Homebrew Python
-# Instruction:  http://penandpants.com/2012/02/24/install-python/
-# Site-packages:  /usr/local/lib/python2.7/site-packages/
-# Other: /usr/local/Cellar/
-export PATH=/usr/local/bin:/usr/local/share/python:$PATH
-
-# Other Pythons:
-#export PYTHONPATH=$PYTHONPATH:/Library/Frameworks/EPD64.framework/Versions/Current/bin
-#export PYTHONPATH=/usr/local/lib/python2.7/site-packages:$PYTHONPATH
-#export PYTHONPATH=$PYTHONPATH:/software/VTK-build/bin/
-#export PYTHONPATH=$PYTHONPATH:/software/VTK/Wrapping/Python/
-#export LD_LIBRARY_PATH=/software/VTK-build/bin/
-# EPD
-#PATH="/Library/Frameworks/EPD64.framework/Versions/Current/bin:${PATH}"
-#export PATH
-
-# VTK install with homebrew (http://mxcl.github.com/homebrew/): 
-# ruby -e "$(curl -fsSkL raw.github.com/mxcl/homebrew/go)"
-# http://powernap.github.com/blog/2012/08/20/install-python-together-with-vtk-using-homebrew-for-mountain-lion/
-# Other VTK installation
-#VTK=/usr/local/Cellar/vtk/5.10.0
-#PATH=${VTK}:${PATH}
-#PATH=${VTK}/bin:${PATH}
-#export VTK PATH
-
 # FreeSurfer:
 FREESURFER_HOME=/appsdir/freesurfer
 SUBJECTS_DIR=/appsdir/freesurfer/subjects
@@ -165,9 +140,9 @@ PATH=${ANTSPATH}:${PATH}
 export ANTSPATH PATH
 
 # AFNI:
-AFNIHOME=/software/AFNI
-PATH=${AFNIHOME}:${PATH}
-export AFNIHOME PATH
+#AFNIHOME=/software/AFNI
+#PATH=${AFNIHOME}:${PATH}
+#export AFNIHOME PATH
 
 # Convert3d:
 C3DDIR=/software/c3D
@@ -185,8 +160,6 @@ MANPATH=${CAMINO}/man:${MANPATH}
 export CAMINO PATH MANPATH
 export CAMINO_HEAP_SIZE=3000
 export PATH="$CAMINO:$PATH"
-#ITKsnap's convert3d tab completion script:
-#source /software/ITKsnap/bashcomp.sh
 
 # ImageMagick:
 #IMAGEDIR=/Software/ImageMagick-6.6.9/bin
@@ -206,4 +179,4 @@ MKL_NUM_THREADS=1
 export MKL_NUM_THREADS
 
 # added by Anaconda 1.6.1 installer
-#export PATH="/software/anaconda/bin:$PATH"
+export PATH="/software/anaconda/bin:$PATH"
