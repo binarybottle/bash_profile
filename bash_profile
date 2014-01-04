@@ -13,8 +13,13 @@ is_linux=1
 # /projects (ex: /home/arno/Projects or /Users/arno/Projects)
 # /software (ex: /home/arno/Software or /Users/arno/Software)
 #
+# Linux:
 # sudo ln -s /usr/local /appsdir
 # sudo ln -s /home/arno /homedir
+# Apple:
+# sudo ln -s /Applications /appsdir
+# sudo ln -s /Users/arno /homedir
+# Linux or Apple:
 # sudo ln -s /homedir/Dropbox /drop
 # sudo ln -s /homedir/Data /data
 # sudo ln -s /homedir/Documents /docs
@@ -27,8 +32,8 @@ is_linux=1
 # Aliases #
 ###########
 # Aliases -- local paths:
- alias b='. /homedir/.bash_profile'
- alias eb='emacs /homedir/.bash_profile'
+ alias b='. /homedir/bash_profile/bash_profile'
+ alias eb='emacs /homedir/bash_profile/bash_profile'
  alias d='cd $1'
  alias da='cd /appsdir'
  alias db='cd /drop'
