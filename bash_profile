@@ -1,4 +1,4 @@
-is_linux=1
+is_linux=0
 
 # Assumes the following symbolic links:
 # /appsdir (ex: /usr/local or /Applications)
@@ -48,14 +48,15 @@ is_linux=1
 
 # Aliases -- remote:
  alias sshd='ssh -x binarybottle@binarybottle.com' # binarybottle
- alias sshm='ssh -p 130 arno@130.245.159.201' # mindboggler
+ alias sshb='ssh -p 22 arno@140.107.149.218' # boggle
+ #alias sshm='ssh -p 130 arno@130.245.159.201' # mindboggler
+ alias sshm='ssh -p 22 arno@boggler4' # mindboggler
  alias sshftpmindboggle='ssh ftpmindboggle@mindboggle.info' # binarybottle
- alias sshk='ssh -x kaklein@kaklein.com' # kaklein
 
 # Aliases -- rsync to home:
  alias rsyncecho='echo "rsync -avz --sparse --exclude-from=/homedir/.rsync-exclude -e /usr/bin/ssh <in> ."'
  alias rsyncdhost2home='cd /homedir/Sites; rsync -avz --delete --numeric-ids --sparse --exclude-from=/homedir/.rsync-exclude -e /usr/bin/ssh binarybottle@binarybottle.com:/home/binarybottle/* .'
- alias rsyncdhostbkp='rsync -e ssh -av A b498945@hanjin.dreamhost.com:~/B'
+ #alias rsyncdhostbkp='rsync -e ssh -av A b498945@hanjin.dreamhost.com:~/B'
 
 # Aliases -- Git:
  alias ga='git add'
@@ -95,7 +96,10 @@ is_linux=1
 if [ $is_linux==1 ]; then
   alias c3d='/software/c3d/bin/c3d'
   alias s='/software/itksnap/bin/itksnap $1'
-#  alias f='/usr/local/fsl/bin/fslview.app/Contents/MacOS/fslview $1'
+fi
+if [ $is_linux==0 ]; then
+  alias s='/appsdir/ITK-SNAP.app/Contents/MacOS/InsightSNAP $1'
+  alias f='/usr/local/fsl/bin/fslview.app/Contents/MacOS/fslview $1'
 fi
  alias e='emacs &'
 
@@ -106,10 +110,10 @@ export EDITOR=/usr/bin/emacs
 export LSCOLORS="ExgxfxfxCxDxDxCxCxaCaC"
 
 # Mindboggle
-MINDBOGGLE_TOOLS=/projects/Mindboggle/mindboggle/mindboggle_tools/bin
+MINDBOGGLE_TOOLS=/software/mindboggle_tools/bin #/projects/Mindboggle/mindboggle/mindboggle_tools/bin
 export MINDBOGGLE_TOOLS
 export PATH=$PATH:$MINDBOGGLE_TOOLS
-#export DYLD_LIBRARY_PATH=<path to anaconda>/lib/vtk-5.10:${DYLD_LIBRARY_PATH}
+export DYLD_LIBRARY_PATH=/anaconda/lib/vtk-5.10:${DYLD_LIBRARY_PATH}
 
 MINDBOGGLE_DATA=/drop/MB/data
 export MINDBOGGLE_DATA
@@ -124,7 +128,7 @@ export FREESURFER_HOME SUBJECTS_DIR
 source $FREESURFER_HOME/SetUpFreeSurfer.sh
 
 # ANTS:
-ANTSPATH=/software/antsbin/bin
+ANTSPATH=/software/antsbin/bin/
 PATH=${ANTSPATH}:${PATH}
 export ANTSPATH PATH
 
@@ -147,3 +151,6 @@ export PATH="$CAMINO:$PATH"
 
 # added by Anaconda 1.6.1 installer
 export PATH="/software/anaconda/bin:$PATH"
+
+# added by Anaconda 1.8.0 installer
+export PATH="//anaconda/bin:$PATH"
