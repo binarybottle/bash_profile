@@ -49,7 +49,8 @@ is_linux=0
 # Aliases -- remote:
  alias sshd='ssh -x binarybottle@binarybottle.com' # binarybottle
  alias sshb='ssh -p 22 arno@140.107.149.218' # boggle
- #alias sshm='ssh -p 130 arno@130.245.159.201' # mindboggler
+ #alias sshm='ssh -p 22 arno@130.245.159.201' # mindboggler
+ alias sshmr='ssh -p 22 root@boggler4' # mindboggler
  alias sshm='ssh -p 22 arno@boggler4' # mindboggler
  alias sshftpmindboggle='ssh ftpmindboggle@mindboggle.info' # binarybottle
 
