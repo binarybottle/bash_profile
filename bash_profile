@@ -18,7 +18,6 @@ is_linux=0
 # sudo ln -s /homedir/data /data
 # sudo ln -s /homedir/docs /docs
 # sudo ln -s /homedir/projects /projects
-# sudo ln -s /homedir/software /software
 
 # Apple:
 # sudo ln -s /Applications /appsdir
@@ -123,7 +122,12 @@ export PATH=$PATH:$MINDBOGGLE_TOOLS
 export DYLD_LIBRARY_PATH=/anaconda/lib/vtk-5.10:${DYLD_LIBRARY_PATH}
 
 # FreeSurfer:
-FREESURFER_HOME=/appsdir/freesurfer
+if [ $is_linux==1 ]; then
+  FREESURFER_HOME=/software/freesurfer
+fi
+if [ $is_linux==0 ]; then
+  FREESURFER_HOME=/appsdir/freesurfer
+fi
 SUBJECTS_DIR=/appsdir/freesurfer/subjects
 PATH=${FREESURFER_HOME}:${PATH}
 export FREESURFER_HOME SUBJECTS_DIR
