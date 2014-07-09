@@ -3,28 +3,31 @@ is_linux=0
 # Assumes the following symbolic links:
 # /appsdir (ex: /usr/local or /Applications)
 # /homedir (ex: /home/arno or /Users/arno)
-# /data (ex: /home/arno/Data or /Users/arno/Data)
-# /desk (ex: /home/arno/Desktop or /Users/arno/Desktop)
-# /docs (ex: /home/arno/Documents or /Users/arno/Documents)
-# /down (ex: /home/arno/Downloads or /Users/arno/Downloads)
-# /drive (ex: /home/arno/Drive or /Users/arno/Drive)
-# /drop (ex: /home/arno/Dropbox or /Users/arno/Dropbox)
-# /homedir (ex: /home/arno or /Users/arno)
-# /projects (ex: /home/arno/Projects or /Users/arno/Projects)
-# /software (ex: /home/arno/Software or /Users/arno/Software)
+# /data (ex: /home/arno/data or /Users/arno/Data)
+# /docs (ex: /home/arno/docs or /Users/arno/Documents)
+# /projects (ex: /home/arno/projects or /Users/arno/Projects)
+# /software (ex: /home/arno/software or /Users/arno/Software)
+# /desk (ex: /Users/arno/Desktop)
+# /down (ex: /Users/arno/Downloads)
+# /drive (ex: /Users/arno/Drive)
+# /drop (ex: /Users/arno/Dropbox)
 #
 # Linux:
 # sudo ln -s /usr/local /appsdir
 # sudo ln -s /home/arno /homedir
+# sudo ln -s /homedir/data /data
+# sudo ln -s /homedir/docs /docs
+# sudo ln -s /homedir/projects /projects
+# sudo ln -s /homedir/software /software
+
 # Apple:
 # sudo ln -s /Applications /appsdir
 # sudo ln -s /Users/arno /homedir
-# Linux or Apple:
 # sudo ln -s /homedir/Dropbox /drop
+# sudo ln -s /homedir/Drive /drive
 # sudo ln -s /homedir/Data /data
 # sudo ln -s /homedir/Documents /docs
 # sudo ln -s /homedir/Downloads /down
-# sudo ln -s /homedir/Drive /drive
 # sudo ln -s /homedir/Projects /projects
 # sudo ln -s /homedir/Software /software
 
@@ -51,12 +54,15 @@ is_linux=0
  alias sshb='ssh -p 22 arno@140.107.149.218' # boggle
  #alias sshm='ssh -p 22 arno@130.245.159.201' # mindboggler
  alias sshmr='ssh -p 22 root@boggler4' # mindboggler
- alias sshm='ssh -p 22 arno@boggler4' # mindboggler
+ alias sshm='ssh -p 22 arno@mindboggler' # mindboggler
+ alias sshm4='ssh -p 22 arno@boggler4' # mindboggler
  alias sshftpmindboggle='ssh ftpmindboggle@mindboggle.info' # binarybottle
 
 # Aliases -- rsync to home:
  alias rsyncecho='echo "rsync -avz --sparse --exclude-from=/homedir/.rsync-exclude -e /usr/bin/ssh <in> ."'
- alias rsyncdhost2home='cd /homedir/Sites; rsync -avz --delete --numeric-ids --sparse --exclude-from=/homedir/.rsync-exclude -e /usr/bin/ssh binarybottle@binarybottle.com:/home/binarybottle/* .'
+ if [ $is_linux==1 ]; then
+   alias rsyncdhost2home='cd /homedir/sites; rsync -avz --delete --numeric-ids --sparse --exclude-from=/homedir/.rsync-exclude -e /usr/bin/ssh binarybottle@binarybottle.com:/home/binarybottle/* .'
+ fi
  #alias rsyncdhostbkp='rsync -e ssh -av A b498945@hanjin.dreamhost.com:~/B'
 
 # Aliases -- Git:
@@ -116,14 +122,9 @@ export MINDBOGGLE_TOOLS
 export PATH=$PATH:$MINDBOGGLE_TOOLS
 export DYLD_LIBRARY_PATH=/anaconda/lib/vtk-5.10:${DYLD_LIBRARY_PATH}
 
-MINDBOGGLE_DATA=/drop/MB/data
-export MINDBOGGLE_DATA
-export PATH=$PATH:$MINDBOGGLE_DATA
-
 # FreeSurfer:
 FREESURFER_HOME=/appsdir/freesurfer
 SUBJECTS_DIR=/appsdir/freesurfer/subjects
-#SUBJECTS_DIR=/data/Brains/Mindboggle101/subjects
 PATH=${FREESURFER_HOME}:${PATH}
 export FREESURFER_HOME SUBJECTS_DIR
 source $FREESURFER_HOME/SetUpFreeSurfer.sh
@@ -133,25 +134,11 @@ ANTSPATH=/software/antsbin/bin/
 PATH=${ANTSPATH}:${PATH}
 export ANTSPATH PATH
 
-# Camino:
-CAMINO=/software/camino
-PATH=${CAMINO}/bin:${PATH}
-MANPATH=${CAMINO}/man:${MANPATH}
-export CAMINO PATH MANPATH
-export CAMINO_HEAP_SIZE=3000
-export PATH="$CAMINO:$PATH"
-
 # FSL:
 #FSLDIR=/appsdir/fsl
 #. ${FSLDIR}/etc/fslconf/fsl.sh
 #PATH=${FSLDIR}/bin:${PATH}
 #export FSLDIR PATH
-
-#MKL_NUM_THREADS=1
-#export MKL_NUM_THREADS
-
-# added by Anaconda 1.6.1 installer
-export PATH="/software/anaconda/bin:$PATH"
 
 # added by Anaconda 1.8.0 installer
 export PATH="//anaconda/bin:$PATH"
