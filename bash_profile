@@ -40,7 +40,7 @@ is_linux=0
  alias sshb='ssh -p 22 arno@boggler4' # boggler4
  alias sshm='ssh -p 22 arno@mindboggler' # mindboggler
  alias sshftpmindboggle='ssh ftpmindboggle@binarybottle.com' # binarybottle
- alias sshdoo='ssh -P 7822 root@disordersordered.org'
+ alias sshdoo='ssh root@disordersordered.org -p 7822'
 
 # Aliases -- rsync to home:
  alias rsyncecho='echo "rsync -avz --sparse --exclude-from=/homedir/.rsync-exclude -e /usr/bin/ssh <in> ."'
