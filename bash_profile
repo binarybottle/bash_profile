@@ -1,32 +1,21 @@
 is_linux=0
 
 # Assumes the following symbolic links:
-# /appsdir (ex: /usr/local or /Applications)
 # /homedir (ex: /home/arno or /Users/arno)
-# /data (ex: /home/arno/Data or /Users/arno/Data)
 # /desk (ex: /home/arno/Desktop or /Users/arno/Desktop)
-# /docs (ex: /home/arno/Documents or /Users/arno/Documents)
-# /down (ex: /home/arno/Downloads or /Users/arno/Downloads)
 # /drive (ex: /home/arno/Drive or /Users/arno/Drive)
-# /drop (ex: /home/arno/Dropbox or /Users/arno/Dropbox)
-# /homedir (ex: /home/arno or /Users/arno)
-# /projects (ex: /home/arno/Projects or /Users/arno/Projects)
 # /software (ex: /home/arno/Software or /Users/arno/Software)
+# /appsdir (ex: /usr/local or /Applications)
 #
 # Linux:
-# sudo ln -s /usr/local /appsdir
 # sudo ln -s /home/arno /homedir
+# sudo ln -s /usr/local /appsdir
 # Apple:
-# sudo ln -s /Applications /appsdir
 # sudo ln -s /Users/arno /homedir
+# sudo ln -s /Applications /appsdir
 # Linux or Apple:
-# sudo ln -s /homedir/Dropbox /drop
-# sudo ln -s /homedir/Data /data
-# sudo ln -s /homedir/Documents /docs
-# sudo ln -s /homedir/Downloads /down
 # sudo ln -s /homedir/Drive /drive
-# sudo ln -s /homedir/Projects /projects
-# sudo ln -s /homedir/Software /software
+# sudo ln -s /homedir/software /software
 
 ###########
 # Aliases #
@@ -36,39 +25,42 @@ is_linux=0
  alias eb='emacs /homedir/bash_profile/bash_profile'
  alias d='cd $1'
  alias da='cd /appsdir'
- alias db='cd /drop'
- alias dc='cd /docs'
  alias dk='cd /desk'
- alias dm='cd /projects/Mindboggle/mindboggle/mindboggle'
- alias dn='cd /downloads'
- alias dp='cd /projects'
- alias ds='cd /software'
- alias dt='cd /data'
  alias dv='cd /drive'
+ alias ds='cd /software'
+ alias vv='/software/install/mindboggle/mindboggle/thirdparty/vtkviewer.py $1'
+ alias pp='/software/prepend_filenames $1'
+ alias ss='/software/substr_filenames'
+ alias mogrify='/opt/ImageMagick/bin/mogrify'
 
 # Aliases -- remote:
  alias sshd='ssh -x binarybottle@binarybottle.com' # binarybottle
- alias sshb='ssh -p 22 arno@140.107.149.218' # boggle
- #alias sshm='ssh -p 22 arno@130.245.159.201' # mindboggler
- alias sshmr='ssh -p 22 root@boggler4' # mindboggler
- alias sshm='ssh -p 22 arno@boggler4' # mindboggler
- alias sshftpmindboggle='ssh ftpmindboggle@mindboggle.info' # binarybottle
+ alias sshp='ssh -x pupating@pupating.org' # pupating
+ alias sshb='ssh -p 22 arno@boggler4' # boggler4
+ alias sshm='ssh -p 22 arno@mindboggler' # mindboggler
+ alias sshftpmindboggle='ssh ftpmindboggle@binarybottle.com' # binarybottle
+ alias sshdoo='ssh -P 7822 root@disordersordered.org'
 
 # Aliases -- rsync to home:
  alias rsyncecho='echo "rsync -avz --sparse --exclude-from=/homedir/.rsync-exclude -e /usr/bin/ssh <in> ."'
- alias rsyncdhost2home='cd /homedir/Sites; rsync -avz --delete --numeric-ids --sparse --exclude-from=/homedir/.rsync-exclude -e /usr/bin/ssh binarybottle@binarybottle.com:/home/binarybottle/* .'
+ alias rsyncecho2='echo "rsync -avz --delete --sparse --exclude-from=/homedir/.rsync-exclude -e /usr/bin/ssh <in> ."'
  #alias rsyncdhostbkp='rsync -e ssh -av A b498945@hanjin.dreamhost.com:~/B'
 
 # Aliases -- Git:
  alias ga='git add'
+ alias go='git checkout'
+ alias gom='git checkout master'
+ alias gop='git checkout gh-pages'
  alias gc='git commit'
- alias gp='git push origin master'
+ alias gp='git push'
+ alias gpom='git push origin master'
+ alias gpop='git push origin gh-pages'
  alias gpull='git pull'
  alias gb='git branch'
  alias gh='git --help'
- alias go='git checkout'
- alias gs='git status -s'
+ alias gs='git status'
  alias gd='git diff'
+ alias glola='git log --graph --decorate --pretty=oneline --abbrev-commit --name-status'
 
 # Aliases -- list:
  alias t='ls $1'
@@ -94,64 +86,53 @@ is_linux=0
  alias rrf='rm -rf'
 
 # Aliases -- applications:
-if [ $is_linux==1 ]; then
-  alias c3d='/software/c3d/bin/c3d'
-  alias s='/software/itksnap/bin/itksnap $1'
-fi
-if [ $is_linux==0 ]; then
-  alias s='/appsdir/ITK-SNAP.app/Contents/MacOS/InsightSNAP $1'
-  alias f='/usr/local/fsl/bin/fslview.app/Contents/MacOS/fslview $1'
-fi
- alias e='emacs &'
+#alias cmake='/software/install/miniconda3/bin/cmake'
+#if [ $is_linux==1 ]; then
+#  alias c3d='/software/c3d/bin/c3d'
+#  alias s='/software/itksnap/bin/itksnap $1'
+#fi
+#if [ $is_linux==0 ]; then
+#  alias s='/appsdir/ITK-SNAP.app/Contents/MacOS/ITK-SNAP $1'
+#  #alias f='/usr/local/fsl/bin/fslview.app/Contents/MacOS/fslview $1'
+#  alias f='freeview $1'
+#fi
 
 #########
 # PATHS #
 #########
-export EDITOR=/usr/bin/emacs
-export LSCOLORS="ExgxfxfxCxDxDxCxCxaCaC"
 
-# Mindboggle
-MINDBOGGLE_TOOLS=/software/mindboggle_tools/bin #/projects/Mindboggle/mindboggle/mindboggle_tools/bin
-export MINDBOGGLE_TOOLS
-export PATH=$PATH:$MINDBOGGLE_TOOLS
-export DYLD_LIBRARY_PATH=/anaconda/lib/vtk-5.10:${DYLD_LIBRARY_PATH}
-
-MINDBOGGLE_DATA=/drop/MB/data
-export MINDBOGGLE_DATA
-export PATH=$PATH:$MINDBOGGLE_DATA
+# nipype:
+#export NIPYPEPATH=/software/install/nipype/bin
+#export PATH=$NIPYPEPATH:$PATH
 
 # FreeSurfer:
-FREESURFER_HOME=/appsdir/freesurfer
-SUBJECTS_DIR=/appsdir/freesurfer/subjects
-#SUBJECTS_DIR=/data/Brains/Mindboggle101/subjects
-PATH=${FREESURFER_HOME}:${PATH}
-export FREESURFER_HOME SUBJECTS_DIR
-source $FREESURFER_HOME/SetUpFreeSurfer.sh
+#FREESURFER_HOME=/appsdir/freesurfer
+#SUBJECTS_DIR=/appsdir/freesurfer/subjects
+#PATH=${FREESURFER_HOME}:${PATH}
+#export FREESURFER_HOME SUBJECTS_DIR
+#source $FREESURFER_HOME/SetUpFreeSurfer.sh
 
-# ANTS:
-ANTSPATH=/software/antsbin/bin/
-PATH=${ANTSPATH}:${PATH}
-export ANTSPATH PATH
+# ants
+#export ANTSPATH=/software/ants/bin
+#export PATH=$ANTSPATH:$PATH
 
-# Camino:
-CAMINO=/software/camino
-PATH=${CAMINO}/bin:${PATH}
-MANPATH=${CAMINO}/man:${MANPATH}
-export CAMINO PATH MANPATH
-export CAMINO_HEAP_SIZE=3000
-export PATH="$CAMINO:$PATH"
+# added by Anaconda3 2.5.0 installer
+#export PATH="/Users/arno/anaconda/bin:$PATH"
+# Conda
+#export PATH=/software/install/miniconda3/bin:$PATH
 
-# FSL:
-#FSLDIR=/appsdir/fsl
-#. ${FSLDIR}/etc/fslconf/fsl.sh
-#PATH=${FSLDIR}/bin:${PATH}
-#export FSLDIR PATH
+# Mindboggle
+#export vtk_cpp_tools=/software/install/mindboggle/vtk_cpp_tools/bin
+#export PATH=/software/install/mindboggle/vtk_cpp_tools/bin:$PATH
 
-#MKL_NUM_THREADS=1
-#export MKL_NUM_THREADS
+# The next line updates PATH for the Google Cloud SDK.
+#if [ -f /Users/arno/google-cloud-sdk/path.bash.inc ]; then
+#  source '/Users/arno/google-cloud-sdk/path.bash.inc'
+#fi
 
-# added by Anaconda 1.6.1 installer
-export PATH="/software/anaconda/bin:$PATH"
+# The next line enables shell command completion for gcloud.
+#if [ -f /Users/arno/google-cloud-sdk/completion.bash.inc ]; then
+#  source '/Users/arno/google-cloud-sdk/completion.bash.inc'
+#fi
 
-# added by Anaconda 1.8.0 installer
-export PATH="//anaconda/bin:$PATH"
+# alias gcloudarango='gcloud compute --project "mhdb-146422" ssh --zone "us-east1-b" "arangodb-test-23631-1"'
