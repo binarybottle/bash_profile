@@ -10,6 +10,7 @@ is_linux=0
 # Linux:
 # sudo ln -s /home/arno /homedir
 # sudo ln -s /usr/local /appsdir
+
 # Apple:
 # sudo ln -s /Users/arno /homedir
 # sudo ln -s /Applications /appsdir
@@ -116,6 +117,12 @@ is_linux=0
 #export ANTSPATH=/software/ants/bin
 #export PATH=$ANTSPATH:$PATH
 
+# FSL:
+#FSLDIR=/appsdir/fsl
+#. ${FSLDIR}/etc/fslconf/fsl.sh
+#PATH=${FSLDIR}/bin:${PATH}
+#export FSLDIR PATH
+
 # added by Anaconda3 2.5.0 installer
 #export PATH="/Users/arno/anaconda/bin:$PATH"
 # Conda
@@ -134,5 +141,5 @@ is_linux=0
 #if [ -f /Users/arno/google-cloud-sdk/completion.bash.inc ]; then
 #  source '/Users/arno/google-cloud-sdk/completion.bash.inc'
 #fi
-
 # alias gcloudarango='gcloud compute --project "mhdb-146422" ssh --zone "us-east1-b" "arangodb-test-23631-1"'
+
