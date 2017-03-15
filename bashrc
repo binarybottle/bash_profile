@@ -1,7 +1,5 @@
-is_linux=0
-
-# Assumes the following symbolic links to directories within /homedir
-# in Linux (/home/arno) or macOS (/Users/arno):
+# This file assumes the following symbolic links to directories
+# within /homedir in Linux (/home/arno) or macOS (/Users/arno):
 # sudo ln -s /[home,Users]/arno /homedir
 # sudo ln -s /homedir/Data /data            # /homedir/Data
 # sudo ln -s /homedir/Desktop /desk         # /homedir/Desktop
