@@ -86,9 +86,6 @@
 # PATHS #
 #########
 
-# added by Anaconda3 3.5 installer
-export PATH="/anaconda/bin:$PATH"
-
 # Mindboggle
 #export vtk_cpp_tools=/software/install/mindboggle/vtk_cpp_tools/bin
 #export PATH=/software/install/mindboggle/vtk_cpp_tools/bin:$PATH
