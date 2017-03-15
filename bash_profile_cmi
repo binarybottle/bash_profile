@@ -25,22 +25,27 @@ is_linux=0
  alias b='. /homedir/bash_profile/bash_profile'
  alias eb='emacs /homedir/bash_profile/bash_profile'
  alias d='cd $1'
- alias da='cd /appsdir'
+ alias da='cd /data'
  alias dk='cd /desk'
+ alias dc='cd /docs'
+ alias do='cd /downloads'
  alias dv='cd /drive'
  alias ds='cd /software'
  alias vv='/software/install/mindboggle/mindboggle/thirdparty/vtkviewer.py $1'
  alias pp='/software/prepend_filenames $1'
  alias ss='/software/substr_filenames'
  alias mogrify='/opt/ImageMagick/bin/mogrify'
+ alias dmote='sudo /software/droidmote-server-linux-x64-v3.0.2/droidmote 2302 mutedroid'
 
 # Aliases -- remote:
  alias sshd='ssh -x binarybottle@binarybottle.com' # binarybottle
+ alias sshn='ssh arno@ned.childmind.org'
  alias sshp='ssh -x pupating@pupating.org' # pupating
  alias sshb='ssh -p 22 arno@boggler4' # boggler4
  alias sshm='ssh -p 22 arno@mindboggler' # mindboggler
  alias sshftpmindboggle='ssh ftpmindboggle@binarybottle.com' # binarybottle
- alias sshdoo='ssh root@disordersordered.org -p 7822'
+ alias ssha='ssh root@disordersordered.org -p 7822'
+ alias sshaws='ssh -i "/homedir/.aws/binarybottle-aws-ssh-key.pem" ubuntu@ec2-54-146-136-218.compute-1.amazonaws.com'
 
 # Aliases -- rsync to home:
  alias rsyncecho='echo "rsync -avz --sparse --exclude-from=/homedir/.rsync-exclude -e /usr/bin/ssh <in> ."'
@@ -49,9 +54,9 @@ is_linux=0
 
 # Aliases -- Git:
  alias ga='git add'
- alias go='git checkout'
- alias gom='git checkout master'
- alias gop='git checkout gh-pages'
+ alias gco='git checkout'
+ alias gcom='git checkout master'
+ alias gcop='git checkout gh-pages'
  alias gc='git commit'
  alias gp='git push'
  alias gpom='git push origin master'
@@ -123,8 +128,8 @@ is_linux=0
 #PATH=${FSLDIR}/bin:${PATH}
 #export FSLDIR PATH
 
-# added by Anaconda3 2.5.0 installer
-#export PATH="/Users/arno/anaconda/bin:$PATH"
+# added by Anaconda3 3.5 installer
+export PATH="/anaconda/bin:$PATH"
 # Conda
 #export PATH=/software/install/miniconda3/bin:$PATH
 
