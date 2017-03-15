@@ -16,8 +16,8 @@
 # Aliases #
 ###########
 # Aliases -- local paths:
- alias b='. /homedir/bash_profile/bash_profile'
- alias eb='emacs /homedir/bash_profile/bash_profile'
+ alias b='. /homedir/bashrc/bashrc'
+ alias eb='emacs /homedir/bashrc/bashrc'
  alias d='cd $1'
  alias da='cd /data'
  alias dk='cd /desk'
