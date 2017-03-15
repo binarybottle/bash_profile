@@ -1,22 +1,14 @@
 is_linux=0
 
-# Assumes the following symbolic links:
-# /homedir (ex: /home/arno or /Users/arno)
-# /desk (ex: /home/arno/Desktop or /Users/arno/Desktop)
-# /drive (ex: /home/arno/Drive or /Users/arno/Drive)
-# /software (ex: /home/arno/Software or /Users/arno/Software)
-# /appsdir (ex: /usr/local or /Applications)
-#
-# Linux:
-# sudo ln -s /home/arno /homedir
-# sudo ln -s /usr/local /appsdir
-
-# Apple:
-# sudo ln -s /Users/arno /homedir
-# sudo ln -s /Applications /appsdir
-# Linux or Apple:
-# sudo ln -s /homedir/Drive /drive
-# sudo ln -s /homedir/software /software
+# Assumes the following symbolic links to directories within /homedir
+# in Linux (/home/arno) or macOS (/Users/arno):
+# sudo ln -s /[home,Users]/arno /homedir
+# sudo ln -s /homedir/Data /data            # /homedir/Data
+# sudo ln -s /homedir/Desktop /desk         # /homedir/Desktop
+# sudo ln -s /homedir/Documents /docs       # /homedir/Documents
+# sudo ln -s /homedir/Downloads /downloads  # /homedir/Downloads
+# sudo ln -s /homedir/Drive /drive          # /homedir/Drive
+# sudo ln -s /homedir/Software /software    # /homedir/Software
 
 ###########
 # Aliases #
@@ -31,9 +23,8 @@ is_linux=0
  alias do='cd /downloads'
  alias dv='cd /drive'
  alias ds='cd /software'
- alias vv='/software/install/mindboggle/mindboggle/thirdparty/vtkviewer.py $1'
- alias pp='/software/prepend_filenames $1'
- alias ss='/software/substr_filenames'
+ alias pp='/software/arno_utils/prepend_filenames $1'
+ alias ss='/software/arno_utils/substr_filenames'
  alias mogrify='/opt/ImageMagick/bin/mogrify'
  alias dmote='sudo /software/droidmote-server-linux-x64-v3.0.2/droidmote 2302 mutedroid'
 
@@ -44,13 +35,11 @@ is_linux=0
  alias sshb='ssh -p 22 arno@boggler4' # boggler4
  alias sshm='ssh -p 22 arno@mindboggler' # mindboggler
  alias sshftpmindboggle='ssh ftpmindboggle@binarybottle.com' # binarybottle
- alias ssha='ssh root@disordersordered.org -p 7822'
  alias sshaws='ssh -i "/homedir/.aws/binarybottle-aws-ssh-key.pem" ubuntu@ec2-54-146-136-218.compute-1.amazonaws.com'
 
 # Aliases -- rsync to home:
  alias rsyncecho='echo "rsync -avz --sparse --exclude-from=/homedir/.rsync-exclude -e /usr/bin/ssh <in> ."'
  alias rsyncecho2='echo "rsync -avz --delete --sparse --exclude-from=/homedir/.rsync-exclude -e /usr/bin/ssh <in> ."'
- #alias rsyncdhostbkp='rsync -e ssh -av A b498945@hanjin.dreamhost.com:~/B'
 
 # Aliases -- Git:
  alias ga='git add'
@@ -88,63 +77,16 @@ is_linux=0
  alias h='history'
  alias m='more'
  alias p='pwd'
- alias r='rm *#* .*#* *~ .*~ core .DS_Store *.pyc crash-*'
+ alias r='rm *#* .*#* *~ .*~ core .DS_Store *.pyc crash-* .directory'
  alias rrf='rm -rf'
-
-# Aliases -- applications:
-#alias cmake='/software/install/miniconda3/bin/cmake'
-#if [ $is_linux==1 ]; then
-#  alias c3d='/software/c3d/bin/c3d'
-#  alias s='/software/itksnap/bin/itksnap $1'
-#fi
-#if [ $is_linux==0 ]; then
-#  alias s='/appsdir/ITK-SNAP.app/Contents/MacOS/ITK-SNAP $1'
-#  #alias f='/usr/local/fsl/bin/fslview.app/Contents/MacOS/fslview $1'
-#  alias f='freeview $1'
-#fi
 
 #########
 # PATHS #
 #########
 
-# nipype:
-#export NIPYPEPATH=/software/install/nipype/bin
-#export PATH=$NIPYPEPATH:$PATH
-
-# FreeSurfer:
-#FREESURFER_HOME=/appsdir/freesurfer
-#SUBJECTS_DIR=/appsdir/freesurfer/subjects
-#PATH=${FREESURFER_HOME}:${PATH}
-#export FREESURFER_HOME SUBJECTS_DIR
-#source $FREESURFER_HOME/SetUpFreeSurfer.sh
-
-# ants
-#export ANTSPATH=/software/ants/bin
-#export PATH=$ANTSPATH:$PATH
-
-# FSL:
-#FSLDIR=/appsdir/fsl
-#. ${FSLDIR}/etc/fslconf/fsl.sh
-#PATH=${FSLDIR}/bin:${PATH}
-#export FSLDIR PATH
-
 # added by Anaconda3 3.5 installer
 export PATH="/anaconda/bin:$PATH"
-# Conda
-#export PATH=/software/install/miniconda3/bin:$PATH
 
 # Mindboggle
 #export vtk_cpp_tools=/software/install/mindboggle/vtk_cpp_tools/bin
 #export PATH=/software/install/mindboggle/vtk_cpp_tools/bin:$PATH
-
-# The next line updates PATH for the Google Cloud SDK.
-#if [ -f /Users/arno/google-cloud-sdk/path.bash.inc ]; then
-#  source '/Users/arno/google-cloud-sdk/path.bash.inc'
-#fi
-
-# The next line enables shell command completion for gcloud.
-#if [ -f /Users/arno/google-cloud-sdk/completion.bash.inc ]; then
-#  source '/Users/arno/google-cloud-sdk/completion.bash.inc'
-#fi
-# alias gcloudarango='gcloud compute --project "mhdb-146422" ssh --zone "us-east1-b" "arangodb-test-23631-1"'
-
