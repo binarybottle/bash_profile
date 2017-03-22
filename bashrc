@@ -1,5 +1,5 @@
 # First append the existing ~/.bashrc to ~/bashrc/bashrc,
-# then add a symbolic link: sudo ln -s ~/.bashrc ~/bashrc/bashrc
+# then add a symbolic link: sudo ln -s ~/bashrc/bashrc ~/.bashrc
 
 # This file assumes the following symbolic links to directories
 # within /homedir in Linux (/home/arno) or macOS (/Users/arno):
