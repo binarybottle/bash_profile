@@ -1,5 +1,6 @@
 # First append the existing ~/.bashrc to ~/bashrc/bashrc,
-# then add a symbolic link: sudo ln -s ~/.bashrc ~/bashrc/bashrc
+# then add the symbolic link: sudo ln -s ~/bashrc/bashrc ~/.bashrc
+# On macOS:  sudo ln -s ~/bashrc/bashrc ~/.bash_profile
 
 # This file assumes the following symbolic links to directories
 # within /homedir in Linux (/home/arno) or macOS (/Users/arno):
@@ -224,4 +225,4 @@ if ! shopt -oq posix; then
 fi
 
 # added by Anaconda3 4.3.0 installer
-export PATH="/home/arnoklein/anaconda3/bin:$PATH"
+export PATH="/homedir/anaconda3/bin:$PATH"
