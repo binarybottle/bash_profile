@@ -35,19 +35,13 @@
  alias ss='/software/arno_utils/substr_filenames'
  alias mogrify='/opt/ImageMagick/bin/mogrify'
  alias dmote='sudo /software/droidmote-server-linux-x64-v3.0.2/droidmote 2302 mutedroid'
-<<<<<<< HEAD
  alias gradle='/opt/gradle/gradle-4.3.1/bin/gradle'
-=======
- alias ff='/software/firefox/firefox &'
->>>>>>> 686362b6920f1bf991c73878ed4627a9df17db54
 
 # Aliases -- remote:
  alias ssha='ssh -p 7822 root@68.66.205.123' # a2
  alias sshd='ssh -x binarybottle@binarybottle.com' # binarybottle
  alias sshn='ssh arno@ned.childmind.org'
  alias sshp='ssh -x pupating@pupating.org' # pupating
-# alias sshb='ssh -p 22 arno@boggler4' # boggler4
-# alias sshm='ssh -p 22 arno@mindboggler' # mindboggler
  alias sshftpmindboggle='ssh ftpmindboggle@binarybottle.com' # binarybottle
 
 # Aliases -- rsync to home:
@@ -59,15 +53,17 @@
  alias gco='git checkout'
  alias gcom='git checkout master'
  alias gcop='git checkout gh-pages'
+ alias gs='git status'
+ alias gf='git fetch origin'
+ alias gd='git diff'
+ alias gdiff='git diff master origin/master'
+ alias gpull='git pull'
  alias gc='git commit'
  alias gp='git push'
  alias gpom='git push origin master'
  alias gpop='git push origin gh-pages'
- alias gpull='git pull'
  alias gb='git branch'
  alias gh='git --help'
- alias gs='git status'
- alias gd='git diff'
  alias glola='git log --graph --decorate --pretty=oneline --abbrev-commit --name-status'
 
 # Aliases -- list:
