@@ -1,5 +1,5 @@
 # First append the existing ~/.bashrc to ~/bashrc/bashrc,
-# then add a symbolic link: sudo ln -s ~/bashrc/bashrc ~/.bashrc
+# then add the symbolic link: sudo ln -s ~/bashrc/bashrc ~/.bashrc
 # On macOS:  sudo ln -s ~/bashrc/bashrc ~/.bash_profile
 
 # This file assumes the following symbolic links to directories
@@ -12,6 +12,12 @@
 # sudo ln -s /homedir/Drive /drive          # /homedir/Drive
 # sudo ln -s /homedir/Software /software    # /homedir/Software
 
+
+# sudo /software/rclone-v1.37-linux-amd64/rclone copy gdrive: bb2:GoogleDriveArnoKlein
+# sudo /software/rclone-v1.37-linux-amd64/rclone copy gdrive_ellora: bb2:GoogleDriveElloraKlein --exclude media/**
+## sudo /software/rclone-v1.37-linux-amd64/rclone copy gdrive: /media/arnoklein/3B3106B75726F570
+##  sudo /software/rclone-v1.37-linux-amd64/rclone copy gdrive_ellora: /media/arnoklein/3B3106B75726F570/GoogleDriveEllora --exclude media/**
+
 ###########
 # Aliases #
 ###########
@@ -22,24 +28,27 @@
  alias da='cd /data'
  alias dk='cd /desk'
  alias dc='cd /docs'
- alias do='cd /downloads'
+ alias dw='cd /downloads'
  alias dv='cd /drive'
  alias ds='cd /software'
  alias pp='/software/arno_utils/prepend_filenames $1'
  alias ss='/software/arno_utils/substr_filenames'
  alias mogrify='/opt/ImageMagick/bin/mogrify'
  alias dmote='sudo /software/droidmote-server-linux-x64-v3.0.2/droidmote 2302 mutedroid'
+<<<<<<< HEAD
  alias gradle='/opt/gradle/gradle-4.3.1/bin/gradle'
+=======
+ alias ff='/software/firefox/firefox &'
+>>>>>>> 686362b6920f1bf991c73878ed4627a9df17db54
 
 # Aliases -- remote:
  alias ssha='ssh -p 7822 root@68.66.205.123' # a2
  alias sshd='ssh -x binarybottle@binarybottle.com' # binarybottle
  alias sshn='ssh arno@ned.childmind.org'
  alias sshp='ssh -x pupating@pupating.org' # pupating
- alias sshb='ssh -p 22 arno@boggler4' # boggler4
- alias sshm='ssh -p 22 arno@mindboggler' # mindboggler
+# alias sshb='ssh -p 22 arno@boggler4' # boggler4
+# alias sshm='ssh -p 22 arno@mindboggler' # mindboggler
  alias sshftpmindboggle='ssh ftpmindboggle@binarybottle.com' # binarybottle
- alias sshaws='ssh -i "/homedir/.aws/binarybottle-aws-ssh-key.pem" ubuntu@ec2-54-146-136-218.compute-1.amazonaws.com'
 
 # Aliases -- rsync to home:
  alias rsyncecho='echo "rsync -avz --sparse --exclude-from=/homedir/.rsync-exclude -e /usr/bin/ssh <in> ."'
@@ -62,15 +71,17 @@
  alias glola='git log --graph --decorate --pretty=oneline --abbrev-commit --name-status'
 
 # Aliases -- list:
- alias t='ls $1'
- alias ta='ls -A $1'
- alias tm='ls $1 | more'
- alias tam='ls -A $1 | more'
- alias tt='ls -lart $1'
- alias tta='ls -lA $1'
- alias ttm='ls -l $1 | more'
- alias ttam='ls -lA $1 | more'
- alias td='ls -ba'
+ alias t='ls -Fg $1'
+ alias tr='ls -RFg $1'
+ alias ta='ls -AFg $1'
+ alias tm='ls -Fg $1 | more'
+ alias tam='ls -AFg $1 | more'
+ alias tt='ls -lArtFg $1'
+ alias ttr='ls -lArtFg $1'
+ alias tta='ls -lAFg $1'
+ alias ttm='ls -lFg $1 | more'
+ alias ttam='ls -lAFg $1 | more'
+ alias td='ls -bag'
  alias tdd='ls .[a-zA-Z0-9_]*'
  alias du='du -hs *'
 
@@ -96,6 +107,10 @@ export FREESURFER_HOME=/Applications/freesurfer
 bash $FREESURFER_HOME/SetUpFreeSurfer.sh
 #source $FREESURFER_HOME/SetUpFreeSurfer.sh
 export PATH=$FREESURFER_HOME/bin:$PATH
+
+export ANDROID_HOME=/homedir/Android/Sdk
+#export ANDROID_HOME=/usr/local/android-studio
+export PATH=${PATH}:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools
 
 ####################
 # ORIGINAL .BASHRC #
