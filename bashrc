@@ -3,12 +3,12 @@
 
 ## Symbolic links to directories
 # sudo ln -s /[home,Users]/arno /homedir
-# sudo ln -s /homedir/Data /data            # /homedir/Data
-# sudo ln -s /homedir/Desktop /desk         # /homedir/Desktop
-# sudo ln -s /homedir/Documents /docs       # /homedir/Documents
-# sudo ln -s /homedir/Downloads /down       # /homedir/Downloads
-# sudo ln -s /homedir/Software /software    # /homedir/Software
-# sudo ln -s /homedir/Drive /drive          # /homedir/Drive
+# sudo ln -s /homedir/Data /data             # /homedir/Data
+# sudo ln -s /homedir/Desktop /desk          # /homedir/Desktop
+# sudo ln -s /homedir/Documents /docs        # /homedir/Documents
+# sudo ln -s /homedir/Downloads /down        # /homedir/Downloads
+# sudo ln -s /homedir/Drive/GitHub /soft     # /homedir/Software
+# sudo ln -s /homedir/Drive /drive           # /homedir/Drive
 
 ## Backup commands
 # sudo rclone copy gdrive: bb2:GoogleDriveArnoKlein
@@ -98,6 +98,11 @@ export PATH="$GRADLE_HOME/bin:$PATH"
 export PATH="$ANDROID_HOME/tools:$PATH"
 export PATH="$ANDROID_HOME/platform-tools:$PATH"
 export PATH="/usr/local/sbin:$PATH"
+
+export FREESURFER_HOME=/Applications/freesurfer
+source $FREESURFER_HOME/SetUpFreeSurfer.sh
+
+export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk1.8.0_162.jdk/Contents/Home/"
 
 # added by Anaconda3 4.3.0 installer
 export PATH="/homedir/anaconda3/bin:$PATH"
