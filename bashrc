@@ -11,7 +11,9 @@
 # sudo ln -s /homedir/Drive /drive           # /homedir/Drive
 
 ## Backup commands
+# sudo rclone copy gdrive: /Volumes/PIECEOFMIND/GoogleDriveArnoKlein
 # sudo rclone copy gdrive: bb2:GoogleDriveArnoKlein
+# sudo rclone copy kak_gdrive: bb2:GoogleDriveKarenKlein
 # sudo rclone copy gdrive_ellora: bb2:GoogleDriveElloraKlein --exclude media/**
 
 ###########
