@@ -11,10 +11,12 @@
 # sudo ln -s /homedir/Drive /drive           # /homedir/Drive
 
 ## Backup commands
-# sudo rclone copy gdrive: /Volumes/PIECEOFMIND/GoogleDriveArnoKlein
-# sudo rclone copy gdrive: bb2:GoogleDriveArnoKlein
-# sudo rclone copy kak_gdrive: bb2:GoogleDriveKarenKlein
-# sudo rclone copy gdrive_ellora: bb2:GoogleDriveElloraKlein --exclude media/**
+# sudo rclone copy gdrive: /Volumes/PIECEOFMIND/GoogleDriveArnoKlein --drive-alternate-export
+# sudo rclone copy gdrive: bb2:GoogleDriveArnoKlein --drive-alternate-export
+# sudo rclone copy kak_gdrive: bb2:GoogleDriveKarenKlein --drive-alternate-export
+# sudo rclone copy ekk_gdrive: bb2:GoogleDriveElloraKlein --exclude media/** --drive-alternate-export
+# rsync -avz --sparse -e /usr/bin/ssh  /Users/arno/GitHub /Volumes/PIECEOFMIND/
+# rsync -avz --sparse -e /usr/bin/ssh  /Users/arno/Zotero /Volumes/PIECEOFMIND/
 
 ###########
 # Aliases #
@@ -30,6 +32,7 @@
  alias r='rm *#* .*#* *~ .*~ core .DS_Store *.pyc crash-* .directory'
  alias rrf='rm -rf'
  alias rsyncecho='echo "rsync -avz --sparse --exclude-from=/homedir/.rsync-exclude -e /usr/bin/ssh <in> ."'
+ alias lunch='bundle exec jekyll serve'
 
 # cd aliases
  alias d='cd $1'
@@ -79,15 +82,16 @@
 
 # ssh aliases
  alias ssha='ssh -p 7822 root@68.66.205.123' # a2
- alias sshd='ssh -x binarybottle@binarybottle.com' # binarybottle
+ alias sshd='ssh -x binarybottle@ps611160.dreamhostps.com' # binarybottle
  alias sshn='ssh arno@ned.childmind.org'
- alias sshp='ssh -x pupating@pupating.org' # pupating
+ alias sshp='ssh -x pupating@ps611160.dreamhostps.com' # pupating
  alias sshftpmindboggle='ssh ftpmindboggle@binarybottle.com' # binarybottle
 
 #########
 # PATHS #
 #########
 
+export PATH=~/.local/bin:$PATH  # awscli
 export ANT_HOME="/usr/local/opt/ant"
 export MAVEN_HOME="/usr/local/opt/maven"
 export GRADLE_HOME="/usr/local/opt/gradle"
@@ -100,11 +104,11 @@ export PATH="$GRADLE_HOME/bin:$PATH"
 export PATH="$ANDROID_HOME/tools:$PATH"
 export PATH="$ANDROID_HOME/platform-tools:$PATH"
 export PATH="/usr/local/sbin:$PATH"
-
-export FREESURFER_HOME=/Applications/freesurfer
-source $FREESURFER_HOME/SetUpFreeSurfer.sh
-
 export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk1.8.0_162.jdk/Contents/Home/"
+
+# Web-Karma
+export MAVEN_OPTS="-Xmx4096m -XX:MaxPermSize=128m"
+alias karma="cd /Users/arno/GitHub/Web-Karma/karma-web;mvn jetty:run" 
 
 # added by Anaconda3 4.3.0 installer
 export PATH="/homedir/anaconda3/bin:$PATH"
@@ -232,3 +236,13 @@ if ! shopt -oq posix; then
 fi
 
 
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/arno/Desktop/google-cloud-sdk/path.bash.inc' ]; then source '/Users/arno/Desktop/google-cloud-sdk/path.bash.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/arno/Desktop/google-cloud-sdk/completion.bash.inc' ]; then source '/Users/arno/Desktop/google-cloud-sdk/completion.bash.inc'; fi
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
