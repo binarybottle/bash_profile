@@ -12,8 +12,8 @@
 ###########
 # Aliases #
 ###########
- alias b='. /homedir/bashrc/bashrc'
- alias eb='emacs /homedir/bashrc/bashrc'
+ alias b='. /Users/arno/bashrc/bashrc'
+ alias eb='emacs /Users/arno/bashrc/bashrc'
  alias a='alias | more'  
  alias cr='cp -R'
  alias md='mkdir $1'
@@ -22,7 +22,7 @@
  alias p='pwd'
  alias r='rm *#* .*#* *~ .*~ core .DS_Store *.pyc crash-* .directory'
  alias rrf='rm -rf'
- alias rsyncecho='echo "rsync -avz --sparse --exclude-from=/homedir/.rsync-exclude -e /usr/bin/ssh <in> ."'
+ alias rsyncecho='echo "rsync -avz --sparse --exclude-from=/Users/arno/.rsync-exclude -e /usr/bin/ssh <in> ."'
  alias lunch='bundle exec jekyll serve'
 
 # cd aliases
@@ -98,7 +98,7 @@ export PATH="/usr/local/sbin:$PATH"
 export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk1.8.0_162.jdk/Contents/Home/"
 
 # added by Anaconda3 4.3.0 installer
-export PATH="/homedir/anaconda3/bin:$PATH"
+export PATH="/Users/arno/anaconda3/bin:$PATH"
 
 # Update PATH for the Google Cloud SDK
 if [ -f '/Users/arno/Desktop/google-cloud-sdk/path.bash.inc' ]; then source '/Users/arno/Desktop/google-cloud-sdk/path.bash.inc'; fi
@@ -106,9 +106,9 @@ if [ -f '/Users/arno/Desktop/google-cloud-sdk/path.bash.inc' ]; then source '/Us
 # Enable shell command completion for gcloud
 if [ -f '/Users/arno/Desktop/google-cloud-sdk/completion.bash.inc' ]; then source '/Users/arno/Desktop/google-cloud-sdk/completion.bash.inc'; fi
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+#export NVM_DIR="$HOME/.nvm"
+#[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+#[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 
 ####################
