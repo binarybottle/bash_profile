@@ -1,14 +1,5 @@
 # When setting up, append the existing ~/.bashrc to ~/bashrc/bashrc,
-# then add the symbolic link: sudo ln -s ~/bashrc/bashrc ~/.bash_profile
-
-## Symbolic links to directories
-# sudo ln -s /[home,Users]/arno /homedir
-# sudo ln -s /homedir/Data /data             # /homedir/Data
-# sudo ln -s /homedir/Desktop /desk          # /homedir/Desktop
-# sudo ln -s /homedir/Documents /docs        # /homedir/Documents
-# sudo ln -s /homedir/Downloads /down        # /homedir/Downloads
-# sudo ln -s /homedir/Drive/GitHub /soft     # /homedir/Software
-# sudo ln -s /homedir/Drive /drive           # /homedir/Drive
+# then add the symbolic link: sudo ln -s ~/bashrc/bashrc ~/.bashrc
 
 ## Backup commands
 # sudo rclone copy gdrive: /Volumes/PIECEOFMIND/GoogleDriveArnoKlein --drive-alternate-export
@@ -36,12 +27,12 @@
 
 # cd aliases
  alias d='cd $1'
- alias da='cd /data'
- alias dk='cd /desk'
- alias dc='cd /docs'
- alias dw='cd /downloads'
- alias dv='cd /drive'
- alias ds='cd /software'
+ alias da='cd /Users/arno/Data'
+ alias de='cd /Users/arno/Desktop'
+ alias do='cd /Users/arno/Documents'
+ alias dw='cd /Users/arno/Downloads'
+ alias ds='cd /Users/arno/Software'
+ alias dr='cd /Users/arno/Drive'
 
 # ls aliases
  alias t='ls $1'
@@ -93,25 +84,32 @@
 
 export PATH=~/.local/bin:$PATH  # awscli
 export ANT_HOME="/usr/local/opt/ant"
-export MAVEN_HOME="/usr/local/opt/maven"
+#export MAVEN_HOME="/usr/local/opt/maven"
 export GRADLE_HOME="/usr/local/opt/gradle"
 export ANDROID_HOME="/usr/local/share/android-sdk"
 export ANDROID_SDK_ROOT="/usr/local/share/android-sdk"
 export ANDROID_NDK_HOME="/usr/local/share/android-ndk"
 export PATH="$ANT_HOME/bin:$PATH"
-export PATH="$MAVEN_HOME/bin:$PATH"
+#export PATH="$MAVEN_HOME/bin:$PATH"
 export PATH="$GRADLE_HOME/bin:$PATH"
 export PATH="$ANDROID_HOME/tools:$PATH"
 export PATH="$ANDROID_HOME/platform-tools:$PATH"
 export PATH="/usr/local/sbin:$PATH"
 export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk1.8.0_162.jdk/Contents/Home/"
 
-# Web-Karma
-export MAVEN_OPTS="-Xmx4096m -XX:MaxPermSize=128m"
-alias karma="cd /Users/arno/GitHub/Web-Karma/karma-web;mvn jetty:run" 
-
 # added by Anaconda3 4.3.0 installer
 export PATH="/homedir/anaconda3/bin:$PATH"
+
+# Update PATH for the Google Cloud SDK
+if [ -f '/Users/arno/Desktop/google-cloud-sdk/path.bash.inc' ]; then source '/Users/arno/Desktop/google-cloud-sdk/path.bash.inc'; fi
+
+# Enable shell command completion for gcloud
+if [ -f '/Users/arno/Desktop/google-cloud-sdk/completion.bash.inc' ]; then source '/Users/arno/Desktop/google-cloud-sdk/completion.bash.inc'; fi
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
 
 ####################
 # ORIGINAL .BASHRC #
@@ -235,14 +233,3 @@ if ! shopt -oq posix; then
   fi
 fi
 
-
-
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/arno/Desktop/google-cloud-sdk/path.bash.inc' ]; then source '/Users/arno/Desktop/google-cloud-sdk/path.bash.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f '/Users/arno/Desktop/google-cloud-sdk/completion.bash.inc' ]; then source '/Users/arno/Desktop/google-cloud-sdk/completion.bash.inc'; fi
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
