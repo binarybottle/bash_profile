@@ -6,7 +6,6 @@
 # sudo rclone copy gdrive: bb2:GoogleDriveArnoKlein --drive-alternate-export
 # sudo rclone copy kak_gdrive: bb2:GoogleDriveKarenKlein --drive-alternate-export
 # sudo rclone copy ekk_gdrive: bb2:GoogleDriveElloraKlein --exclude media/** --drive-alternate-export
-# rsync -avz --sparse -e /usr/bin/ssh  /Users/arno/GitHub /Volumes/PIECEOFMIND/
 # rsync -avz --sparse -e /usr/bin/ssh  /Users/arno/Zotero /Volumes/PIECEOFMIND/
 
 ###########
@@ -76,6 +75,7 @@
  alias sshd='ssh -x binarybottle@ps611160.dreamhostps.com' # binarybottle
  alias sshn='ssh arno@ned.childmind.org'
  alias sshp='ssh -x pupating@ps611160.dreamhostps.com' # pupating
+ alias sshc='ssh -x chefsherri@ps611160.dreamhostps.com' # chefsherri
  alias sshftpmindboggle='ssh ftpmindboggle@binarybottle.com' # binarybottle
 
 #########
@@ -84,18 +84,23 @@
 
 export PATH=~/.local/bin:$PATH  # awscli
 export ANT_HOME="/usr/local/opt/ant"
-#export MAVEN_HOME="/usr/local/opt/maven"
-export GRADLE_HOME="/usr/local/opt/gradle"
-export ANDROID_HOME="/usr/local/share/android-sdk"
-export ANDROID_SDK_ROOT="/usr/local/share/android-sdk"
-export ANDROID_NDK_HOME="/usr/local/share/android-ndk"
 export PATH="$ANT_HOME/bin:$PATH"
+#export MAVEN_HOME="/usr/local/opt/maven"
 #export PATH="$MAVEN_HOME/bin:$PATH"
+export GRADLE_HOME="/usr/local/opt/gradle"
 export PATH="$GRADLE_HOME/bin:$PATH"
-export PATH="$ANDROID_HOME/tools:$PATH"
-export PATH="$ANDROID_HOME/platform-tools:$PATH"
 export PATH="/usr/local/sbin:$PATH"
 export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk1.8.0_162.jdk/Contents/Home/"
+
+#export ANDROID_HOME=$HOME/Library/Android/sdk
+export ANDROID_HOME="/usr/local/share/android-sdk"
+export PATH=$PATH:$ANDROID_HOME/emulator
+export PATH=$PATH:$ANDROID_HOME/tools
+export PATH=$PATH:$ANDROID_HOME/tools/bin
+export PATH=$PATH:$ANDROID_HOME/platform-tools
+export ANDROID_SDK_ROOT=$ANDROID_HOME
+export ANDROID_AVD_HOME=$HOME/.android/avd
+alias emulator='$ANDROID_SDK_ROOT/tools/emulator'
 
 # added by Anaconda3 4.3.0 installer
 export PATH="/Users/arno/anaconda3/bin:$PATH"
@@ -106,9 +111,10 @@ if [ -f '/Users/arno/Desktop/google-cloud-sdk/path.bash.inc' ]; then source '/Us
 # Enable shell command completion for gcloud
 if [ -f '/Users/arno/Desktop/google-cloud-sdk/completion.bash.inc' ]; then source '/Users/arno/Desktop/google-cloud-sdk/completion.bash.inc'; fi
 
-#export NVM_DIR="$HOME/.nvm"
-#[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-#[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+# Node
+  export NVM_DIR="$HOME/.nvm"
+  [ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
+  [ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && . "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
 
 
 ####################
